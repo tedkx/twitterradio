@@ -1,0 +1,7 @@
+Database name: twitterradio
+Account:       twitterradio
+Created:       Mon Jul 15 11:40:27 EEST 2013
+Status:        active
+Master:        ec2-23-21-211-172.compute-1.amazonaws.com:3306
+Port:          3306
+Username:      twitterradio

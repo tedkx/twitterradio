@@ -1,0 +1,1026 @@
+Play server process ID is 26891
+***** AccountService started
+[[37minfo[0m] play - database [default] connected at jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/twitterradio
+[[37minfo[0m] application - [securesocial] loaded templates plugin: securesocial.controllers.DefaultTemplatesPlugin
+[[37minfo[0m] play - Starting application default Akka system.
+[[37minfo[0m] application - [securesocial] loaded user service: class models.twitter.AccountUserService
+[[37minfo[0m] application - [securesocial] loaded identity provider: twitter
+[[37minfo[0m] play - Application started (Prod)
+[[36mdebug[0m] application - [securesocial] calling deleteExpiredTokens()
+***** AccountService DELETING EXPIRED TOKENS
+[[37minfo[0m] play - Listening for HTTP on /0.0.0.0:8700
+**** SESSIONID: 21860462
+Refreshing trends
+Getting trends from twitter
+keywords size: 10
+keywords size: 0
+keywords size: 10
+***********************************
+Socket for user 21860462 online
+Switching keyword for user 21860462 to #IWishFor5HTix
+creating new stream data for user 21860462
+Is band null: false
+Any listener should now have died
+Received status with ID: 381155631593312256
+getting instance
+System property "mbrola.base" is undefined.  Will not use MBROLA voices.
+Wrote synthesized speech to public/audio/381155631593312256.wav
+Can't write audio to public/audio/381155631593312256.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155632818442241
+getting instance
+Wrote synthesized speech to public/audio/381155632818442241.wav
+Can't write audio to public/audio/381155632818442241.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155634831695872
+getting instance
+Wrote synthesized speech to public/audio/381155634831695872.wav
+Can't write audio to public/audio/381155634831695872.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155637172129793
+getting instance
+Wrote synthesized speech to public/audio/381155637172129793.wav
+Can't write audio to public/audio/381155637172129793.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155637574778880
+getting instance
+Wrote synthesized speech to public/audio/381155637574778880.wav
+Can't write audio to public/audio/381155637574778880.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155645313269760
+getting instance
+Wrote synthesized speech to public/audio/381155645313269760.wav
+Can't write audio to public/audio/381155645313269760.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155646369841153
+getting instance
+Wrote synthesized speech to public/audio/381155646369841153.wav
+Can't write audio to public/audio/381155646369841153.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155650341842944
+getting instance
+Wrote synthesized speech to public/audio/381155650341842944.wav
+Can't write audio to public/audio/381155650341842944.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155650836770816
+getting instance
+Wrote synthesized speech to public/audio/381155650836770816.wav
+Can't write audio to public/audio/381155650836770816.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155653063938049
+getting instance
+Wrote synthesized speech to public/audio/381155653063938049.wav
+Can't write audio to public/audio/381155653063938049.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155653386915840
+getting instance
+Wrote synthesized speech to public/audio/381155653386915840.wav
+Can't write audio to public/audio/381155653386915840.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155655383801856
+getting instance
+Wrote synthesized speech to public/audio/381155655383801856.wav
+Can't write audio to public/audio/381155655383801856.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155659431288832
+getting instance
+Wrote synthesized speech to public/audio/381155659431288832.wav
+Can't write audio to public/audio/381155659431288832.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155660416548864
+getting instance
+Wrote synthesized speech to public/audio/381155660416548864.wav
+Can't write audio to public/audio/381155660416548864.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155662572449792
+getting instance
+Wrote synthesized speech to public/audio/381155662572449792.wav
+Can't write audio to public/audio/381155662572449792.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155670239625216
+getting instance
+Wrote synthesized speech to public/audio/381155670239625216.wav
+Can't write audio to public/audio/381155670239625216.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155673167245312
+getting instance
+Wrote synthesized speech to public/audio/381155673167245312.wav
+Can't write audio to public/audio/381155673167245312.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155675709001728
+getting instance
+Wrote synthesized speech to public/audio/381155675709001728.wav
+Can't write audio to public/audio/381155675709001728.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155677198376960
+getting instance
+Wrote synthesized speech to public/audio/381155677198376960.wav
+Can't write audio to public/audio/381155677198376960.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155683422703616
+getting instance
+Wrote synthesized speech to public/audio/381155683422703616.wav
+Can't write audio to public/audio/381155683422703616.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155688892096512
+getting instance
+Wrote synthesized speech to public/audio/381155688892096512.wav
+Can't write audio to public/audio/381155688892096512.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155689068236800
+getting instance
+Wrote synthesized speech to public/audio/381155689068236800.wav
+Can't write audio to public/audio/381155689068236800.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155689890324480
+getting instance
+Wrote synthesized speech to public/audio/381155689890324480.wav
+Can't write audio to public/audio/381155689890324480.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155697159065600
+getting instance
+Wrote synthesized speech to public/audio/381155697159065600.wav
+Can't write audio to public/audio/381155697159065600.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155700203724800
+getting instance
+Wrote synthesized speech to public/audio/381155700203724800.wav
+Can't write audio to public/audio/381155700203724800.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155700430233600
+getting instance
+Wrote synthesized speech to public/audio/381155700430233600.wav
+Can't write audio to public/audio/381155700430233600.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155701323993088
+getting instance
+Wrote synthesized speech to public/audio/381155701323993088.wav
+Can't write audio to public/audio/381155701323993088.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155703588536321
+getting instance
+Wrote synthesized speech to public/audio/381155703588536321.wav
+Can't write audio to public/audio/381155703588536321.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155708114579456
+getting instance
+Wrote synthesized speech to public/audio/381155708114579456.wav
+Can't write audio to public/audio/381155708114579456.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155714858627072
+getting instance
+Wrote synthesized speech to public/audio/381155714858627072.wav
+Can't write audio to public/audio/381155714858627072.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155717505236992
+getting instance
+Wrote synthesized speech to public/audio/381155717505236992.wav
+Can't write audio to public/audio/381155717505236992.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155719120424960
+getting instance
+Wrote synthesized speech to public/audio/381155719120424960.wav
+Can't write audio to public/audio/381155719120424960.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155719849857024
+getting instance
+Wrote synthesized speech to public/audio/381155719849857024.wav
+Can't write audio to public/audio/381155719849857024.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155720084742144
+getting instance
+Wrote synthesized speech to public/audio/381155720084742144.wav
+Can't write audio to public/audio/381155720084742144.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155724371722240
+getting instance
+Wrote synthesized speech to public/audio/381155724371722240.wav
+Can't write audio to public/audio/381155724371722240.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155727878152192
+getting instance
+Wrote synthesized speech to public/audio/381155727878152192.wav
+Can't write audio to public/audio/381155727878152192.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155727881957376
+getting instance
+Wrote synthesized speech to public/audio/381155727881957376.wav
+Can't write audio to public/audio/381155727881957376.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155732965425152
+getting instance
+Wrote synthesized speech to public/audio/381155732965425152.wav
+Can't write audio to public/audio/381155732965425152.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155733477146624
+getting instance
+Wrote synthesized speech to public/audio/381155733477146624.wav
+Can't write audio to public/audio/381155733477146624.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155735855321089
+getting instance
+Wrote synthesized speech to public/audio/381155735855321089.wav
+Can't write audio to public/audio/381155735855321089.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155740704333824
+getting instance
+Wrote synthesized speech to public/audio/381155740704333824.wav
+Can't write audio to public/audio/381155740704333824.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155741266354176
+getting instance
+Wrote synthesized speech to public/audio/381155741266354176.wav
+Can't write audio to public/audio/381155741266354176.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155741920264192
+getting instance
+Wrote synthesized speech to public/audio/381155741920264192.wav
+Can't write audio to public/audio/381155741920264192.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155747029336064
+getting instance
+Wrote synthesized speech to public/audio/381155747029336064.wav
+Can't write audio to public/audio/381155747029336064.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155751210651648
+getting instance
+Wrote synthesized speech to public/audio/381155751210651648.wav
+Can't write audio to public/audio/381155751210651648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155752440000512
+getting instance
+Wrote synthesized speech to public/audio/381155752440000512.wav
+Can't write audio to public/audio/381155752440000512.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155760656240640
+getting instance
+Wrote synthesized speech to public/audio/381155760656240640.wav
+Can't write audio to public/audio/381155760656240640.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155773000450048
+getting instance
+Wrote synthesized speech to public/audio/381155773000450048.wav
+Can't write audio to public/audio/381155773000450048.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155775408005121
+getting instance
+Wrote synthesized speech to public/audio/381155775408005121.wav
+Can't write audio to public/audio/381155775408005121.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155781535469568
+getting instance
+Wrote synthesized speech to public/audio/381155781535469568.wav
+Can't write audio to public/audio/381155781535469568.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155784199241728
+getting instance
+Wrote synthesized speech to public/audio/381155784199241728.wav
+Can't write audio to public/audio/381155784199241728.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155788472856576
+getting instance
+Wrote synthesized speech to public/audio/381155788472856576.wav
+Can't write audio to public/audio/381155788472856576.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155794315534336
+getting instance
+Wrote synthesized speech to public/audio/381155794315534336.wav
+Can't write audio to public/audio/381155794315534336.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155799352872960
+getting instance
+Wrote synthesized speech to public/audio/381155799352872960.wav
+Can't write audio to public/audio/381155799352872960.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155803702366208
+getting instance
+Wrote synthesized speech to public/audio/381155803702366208.wav
+Can't write audio to public/audio/381155803702366208.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155806550691840
+getting instance
+Wrote synthesized speech to public/audio/381155806550691840.wav
+Can't write audio to public/audio/381155806550691840.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155806529331200
+getting instance
+Wrote synthesized speech to public/audio/381155806529331200.wav
+Can't write audio to public/audio/381155806529331200.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155809834831872
+getting instance
+Wrote synthesized speech to public/audio/381155809834831872.wav
+Can't write audio to public/audio/381155809834831872.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155810740826112
+getting instance
+Wrote synthesized speech to public/audio/381155810740826112.wav
+Can't write audio to public/audio/381155810740826112.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155812170682370
+getting instance
+Wrote synthesized speech to public/audio/381155812170682370.wav
+Can't write audio to public/audio/381155812170682370.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155812548169728
+getting instance
+Wrote synthesized speech to public/audio/381155812548169728.wav
+Can't write audio to public/audio/381155812548169728.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155832395993088
+getting instance
+Wrote synthesized speech to public/audio/381155832395993088.wav
+Can't write audio to public/audio/381155832395993088.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155839329189888
+getting instance
+Wrote synthesized speech to public/audio/381155839329189888.wav
+Can't write audio to public/audio/381155839329189888.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155843195936768
+getting instance
+Wrote synthesized speech to public/audio/381155843195936768.wav
+Can't write audio to public/audio/381155843195936768.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155845142507520
+getting instance
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-hh
+Can't find diphone hh-pau
+Can't find diphone hh-pau
+Wrote synthesized speech to public/audio/381155845142507520.wav
+Can't write audio to public/audio/381155845142507520.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155848854446080
+getting instance
+Wrote synthesized speech to public/audio/381155848854446080.wav
+Can't write audio to public/audio/381155848854446080.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155849235746816
+getting instance
+Wrote synthesized speech to public/audio/381155849235746816.wav
+Can't write audio to public/audio/381155849235746816.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155852629344256
+getting instance
+Wrote synthesized speech to public/audio/381155852629344256.wav
+Can't write audio to public/audio/381155852629344256.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155855678603264
+getting instance
+Wrote synthesized speech to public/audio/381155855678603264.wav
+Can't write audio to public/audio/381155855678603264.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155858404487168
+getting instance
+Wrote synthesized speech to public/audio/381155858404487168.wav
+Can't write audio to public/audio/381155858404487168.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155858769797120
+getting instance
+Wrote synthesized speech to public/audio/381155858769797120.wav
+Can't write audio to public/audio/381155858769797120.wav
+Sending a tweet to user 21860462
+**** SESSIONID: 21860462
+Received status with ID: 381155861030510592
+getting instance
+Wrote synthesized speech to public/audio/381155861030510592.wav
+Can't write audio to public/audio/381155861030510592.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155861487697921
+getting instance
+Wrote synthesized speech to public/audio/381155861487697921.wav
+Can't write audio to public/audio/381155861487697921.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155861625724928
+getting instance
+Wrote synthesized speech to public/audio/381155861625724928.wav
+Can't write audio to public/audio/381155861625724928.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155863685132288
+getting instance
+Wrote synthesized speech to public/audio/381155863685132288.wav
+Can't write audio to public/audio/381155863685132288.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155873118494721
+getting instance
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-w
+Can't find diphone w-pau
+Can't find diphone w-pau
+Wrote synthesized speech to public/audio/381155873118494721.wav
+Can't write audio to public/audio/381155873118494721.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155877941948417
+getting instance
+Wrote synthesized speech to public/audio/381155877941948417.wav
+Can't write audio to public/audio/381155877941948417.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155878973734913
+getting instance
+Wrote synthesized speech to public/audio/381155878973734913.wav
+Can't write audio to public/audio/381155878973734913.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155879292514305
+getting instance
+Wrote synthesized speech to public/audio/381155879292514305.wav
+Can't write audio to public/audio/381155879292514305.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155886607384576
+getting instance
+Wrote synthesized speech to public/audio/381155886607384576.wav
+Can't write audio to public/audio/381155886607384576.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155893150097408
+getting instance
+Wrote synthesized speech to public/audio/381155893150097408.wav
+Can't write audio to public/audio/381155893150097408.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155903166087168
+getting instance
+Wrote synthesized speech to public/audio/381155903166087168.wav
+Can't write audio to public/audio/381155903166087168.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155903820824576
+getting instance
+Wrote synthesized speech to public/audio/381155903820824576.wav
+Can't write audio to public/audio/381155903820824576.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155905901170688
+getting instance
+Wrote synthesized speech to public/audio/381155905901170688.wav
+Can't write audio to public/audio/381155905901170688.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155905846276096
+getting instance
+Wrote synthesized speech to public/audio/381155905846276096.wav
+Can't write audio to public/audio/381155905846276096.wav
+Sending a tweet to user 21860462
+keywords size: 10
+Received status with ID: 381155917854945280
+getting instance
+Wrote synthesized speech to public/audio/381155917854945280.wav
+Can't write audio to public/audio/381155917854945280.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155919704653824
+getting instance
+Wrote synthesized speech to public/audio/381155919704653824.wav
+Can't write audio to public/audio/381155919704653824.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155924272246785
+getting instance
+Wrote synthesized speech to public/audio/381155924272246785.wav
+Can't write audio to public/audio/381155924272246785.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155927681802242
+getting instance
+Wrote synthesized speech to public/audio/381155927681802242.wav
+Can't write audio to public/audio/381155927681802242.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155932790464512
+getting instance
+Wrote synthesized speech to public/audio/381155932790464512.wav
+Can't write audio to public/audio/381155932790464512.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155937882750976
+getting instance
+Wrote synthesized speech to public/audio/381155937882750976.wav
+Can't write audio to public/audio/381155937882750976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155938280812544
+getting instance
+Wrote synthesized speech to public/audio/381155938280812544.wav
+Can't write audio to public/audio/381155938280812544.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155939295821825
+getting instance
+keywords size: 0
+Wrote synthesized speech to public/audio/381155939295821825.wav
+Can't write audio to public/audio/381155939295821825.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155940747059201
+getting instance
+Wrote synthesized speech to public/audio/381155940747059201.wav
+Can't write audio to public/audio/381155940747059201.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155943259840512
+getting instance
+Wrote synthesized speech to public/audio/381155943259840512.wav
+Can't write audio to public/audio/381155943259840512.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155947651297280
+getting instance
+Wrote synthesized speech to public/audio/381155947651297280.wav
+Can't write audio to public/audio/381155947651297280.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155947906752512
+getting instance
+Wrote synthesized speech to public/audio/381155947906752512.wav
+Can't write audio to public/audio/381155947906752512.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155950096179200
+getting instance
+Wrote synthesized speech to public/audio/381155950096179200.wav
+Can't write audio to public/audio/381155950096179200.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155954945175552
+getting instance
+Wrote synthesized speech to public/audio/381155954945175552.wav
+Can't write audio to public/audio/381155954945175552.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155958984282112
+getting instance
+Wrote synthesized speech to public/audio/381155958984282112.wav
+Can't write audio to public/audio/381155958984282112.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155960020283393
+getting instance
+Wrote synthesized speech to public/audio/381155960020283393.wav
+Can't write audio to public/audio/381155960020283393.wav
+Sending a tweet to user 21860462
+keywords size: 10
+Received status with ID: 381155974360629248
+getting instance
+Wrote synthesized speech to public/audio/381155974360629248.wav
+Can't write audio to public/audio/381155974360629248.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155977031983105
+getting instance
+Wrote synthesized speech to public/audio/381155977031983105.wav
+Can't write audio to public/audio/381155977031983105.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155977505939456
+getting instance
+Wrote synthesized speech to public/audio/381155977505939456.wav
+Can't write audio to public/audio/381155977505939456.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155990504079360
+getting instance
+Wrote synthesized speech to public/audio/381155990504079360.wav
+Can't write audio to public/audio/381155990504079360.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155991934742528
+getting instance
+Wrote synthesized speech to public/audio/381155991934742528.wav
+Can't write audio to public/audio/381155991934742528.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155992722890752
+getting instance
+Wrote synthesized speech to public/audio/381155992722890752.wav
+Can't write audio to public/audio/381155992722890752.wav
+Sending a tweet to user 21860462
+Received status with ID: 381155995638300672
+getting instance
+Wrote synthesized speech to public/audio/381155995638300672.wav
+Can't write audio to public/audio/381155995638300672.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156019906162689
+getting instance
+Wrote synthesized speech to public/audio/381156019906162689.wav
+Can't write audio to public/audio/381156019906162689.wav
+Sending a tweet to user 21860462
+***********************************
+Socket for user 21860462 online
+Received status with ID: 381156022695788544
+Switching keyword for user 21860462 to #IWishFor5HTix
+Closing listener thread
+Any listener should now have died
+getting instance
+Wrote synthesized speech to public/audio/381156022695788544.wav
+Can't write audio to public/audio/381156022695788544.wav
+Sending a tweet to user 21860462
+--- STREAMTHREAD IS CLOSING ---
+Received status with ID: 381156025413275648
+getting instance
+Wrote synthesized speech to public/audio/381156025413275648.wav
+Can't write audio to public/audio/381156025413275648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156025413275648
+getting instance
+Wrote synthesized speech to public/audio/381156025413275648.wav
+Can't write audio to public/audio/381156025413275648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156056597921792
+getting instance
+Wrote synthesized speech to public/audio/381156056597921792.wav
+Can't write audio to public/audio/381156056597921792.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156056597921792
+getting instance
+Wrote synthesized speech to public/audio/381156056597921792.wav
+Can't write audio to public/audio/381156056597921792.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156066861395968
+getting instance
+Wrote synthesized speech to public/audio/381156066861395968.wav
+Can't write audio to public/audio/381156066861395968.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156066861395968
+getting instance
+Wrote synthesized speech to public/audio/381156066861395968.wav
+Can't write audio to public/audio/381156066861395968.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156067247259648
+getting instance
+Wrote synthesized speech to public/audio/381156067247259648.wav
+Can't write audio to public/audio/381156067247259648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156067247259648
+getting instance
+Wrote synthesized speech to public/audio/381156067247259648.wav
+Can't write audio to public/audio/381156067247259648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156071735164928
+getting instance
+Wrote synthesized speech to public/audio/381156071735164928.wav
+Can't write audio to public/audio/381156071735164928.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156071735164928
+getting instance
+Wrote synthesized speech to public/audio/381156071735164928.wav
+Can't write audio to public/audio/381156071735164928.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156075438759936
+getting instance
+Wrote synthesized speech to public/audio/381156075438759936.wav
+Can't write audio to public/audio/381156075438759936.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156075438759936
+getting instance
+Wrote synthesized speech to public/audio/381156075438759936.wav
+Can't write audio to public/audio/381156075438759936.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156098151317505
+getting instance
+Wrote synthesized speech to public/audio/381156098151317505.wav
+Can't write audio to public/audio/381156098151317505.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156098151317505
+getting instance
+Wrote synthesized speech to public/audio/381156098151317505.wav
+Can't write audio to public/audio/381156098151317505.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156103251582976
+getting instance
+Wrote synthesized speech to public/audio/381156103251582976.wav
+Can't write audio to public/audio/381156103251582976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156103251582976
+getting instance
+Wrote synthesized speech to public/audio/381156103251582976.wav
+Can't write audio to public/audio/381156103251582976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156110477950976
+getting instance
+Wrote synthesized speech to public/audio/381156110477950976.wav
+Can't write audio to public/audio/381156110477950976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156110477950976
+getting instance
+Wrote synthesized speech to public/audio/381156110477950976.wav
+Can't write audio to public/audio/381156110477950976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156113590546433
+getting instance
+Wrote synthesized speech to public/audio/381156113590546433.wav
+Can't write audio to public/audio/381156113590546433.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156113590546433
+getting instance
+Wrote synthesized speech to public/audio/381156113590546433.wav
+Can't write audio to public/audio/381156113590546433.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156122171670528
+getting instance
+Wrote synthesized speech to public/audio/381156122171670528.wav
+Can't write audio to public/audio/381156122171670528.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156122171670528
+getting instance
+Wrote synthesized speech to public/audio/381156122171670528.wav
+Can't write audio to public/audio/381156122171670528.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156127397793795
+getting instance
+Wrote synthesized speech to public/audio/381156127397793795.wav
+Can't write audio to public/audio/381156127397793795.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156127397793795
+getting instance
+Wrote synthesized speech to public/audio/381156127397793795.wav
+Can't write audio to public/audio/381156127397793795.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156128341512192
+getting instance
+Wrote synthesized speech to public/audio/381156128341512192.wav
+Can't write audio to public/audio/381156128341512192.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156128341512192
+getting instance
+Wrote synthesized speech to public/audio/381156128341512192.wav
+Can't write audio to public/audio/381156128341512192.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156131017875456
+getting instance
+Wrote synthesized speech to public/audio/381156131017875456.wav
+Can't write audio to public/audio/381156131017875456.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156131017875456
+getting instance
+Wrote synthesized speech to public/audio/381156131017875456.wav
+Can't write audio to public/audio/381156131017875456.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156133886377984
+getting instance
+Wrote synthesized speech to public/audio/381156133886377984.wav
+Can't write audio to public/audio/381156133886377984.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156133886377984
+getting instance
+Wrote synthesized speech to public/audio/381156133886377984.wav
+Can't write audio to public/audio/381156133886377984.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156136088387584
+getting instance
+Can't find diphone hh-pau
+Can't find diphone hh-pau
+Wrote synthesized speech to public/audio/381156136088387584.wav
+Can't write audio to public/audio/381156136088387584.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156136088387584
+getting instance
+Can't find diphone hh-pau
+Can't find diphone hh-pau
+Wrote synthesized speech to public/audio/381156136088387584.wav
+Can't write audio to public/audio/381156136088387584.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156147111018496
+getting instance
+Wrote synthesized speech to public/audio/381156147111018496.wav
+Can't write audio to public/audio/381156147111018496.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156147111018496
+getting instance
+Wrote synthesized speech to public/audio/381156147111018496.wav
+Can't write audio to public/audio/381156147111018496.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156163749822464
+getting instance
+Can't find diphone hh-k
+Can't find diphone hh-k
+Wrote synthesized speech to public/audio/381156163749822464.wav
+Can't write audio to public/audio/381156163749822464.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156163749822464
+getting instance
+Can't find diphone hh-k
+Can't find diphone hh-k
+Wrote synthesized speech to public/audio/381156163749822464.wav
+Can't write audio to public/audio/381156163749822464.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156174873518080
+getting instance
+Wrote synthesized speech to public/audio/381156174873518080.wav
+Can't write audio to public/audio/381156174873518080.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156174873518080
+getting instance
+Wrote synthesized speech to public/audio/381156174873518080.wav
+Can't write audio to public/audio/381156174873518080.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156175913705472
+getting instance
+Wrote synthesized speech to public/audio/381156175913705472.wav
+Can't write audio to public/audio/381156175913705472.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156175913705472
+getting instance
+Wrote synthesized speech to public/audio/381156175913705472.wav
+Can't write audio to public/audio/381156175913705472.wav
+Sending a tweet to user 21860462
+[[36mdebug[0m] application - [securesocial] calling deleteExpiredTokens()
+***** AccountService DELETING EXPIRED TOKENS
+Received status with ID: 381156179168096256
+getting instance
+Wrote synthesized speech to public/audio/381156179168096256.wav
+Can't write audio to public/audio/381156179168096256.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156179168096256
+getting instance
+Wrote synthesized speech to public/audio/381156179168096256.wav
+Can't write audio to public/audio/381156179168096256.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156179960819713
+getting instance
+Wrote synthesized speech to public/audio/381156179960819713.wav
+Can't write audio to public/audio/381156179960819713.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156179960819713
+getting instance
+Wrote synthesized speech to public/audio/381156179960819713.wav
+Can't write audio to public/audio/381156179960819713.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156182406074368
+getting instance
+Wrote synthesized speech to public/audio/381156182406074368.wav
+Can't write audio to public/audio/381156182406074368.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156182406074368
+getting instance
+Wrote synthesized speech to public/audio/381156182406074368.wav
+Can't write audio to public/audio/381156182406074368.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156199846014976
+getting instance
+Wrote synthesized speech to public/audio/381156199846014976.wav
+Can't write audio to public/audio/381156199846014976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156199846014976
+getting instance
+Wrote synthesized speech to public/audio/381156199846014976.wav
+Can't write audio to public/audio/381156199846014976.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156203784445952
+getting instance
+Wrote synthesized speech to public/audio/381156203784445952.wav
+Can't write audio to public/audio/381156203784445952.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156203784445952
+getting instance
+Wrote synthesized speech to public/audio/381156203784445952.wav
+Can't write audio to public/audio/381156203784445952.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156227788443648
+getting instance
+Wrote synthesized speech to public/audio/381156227788443648.wav
+Can't write audio to public/audio/381156227788443648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156227788443648
+getting instance
+Wrote synthesized speech to public/audio/381156227788443648.wav
+Can't write audio to public/audio/381156227788443648.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156249435250688
+getting instance
+Wrote synthesized speech to public/audio/381156249435250688.wav
+Can't write audio to public/audio/381156249435250688.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156249435250688
+getting instance
+Wrote synthesized speech to public/audio/381156249435250688.wav
+Can't write audio to public/audio/381156249435250688.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156251402379265
+getting instance
+Wrote synthesized speech to public/audio/381156251402379265.wav
+Can't write audio to public/audio/381156251402379265.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156251402379265
+getting instance
+Wrote synthesized speech to public/audio/381156251402379265.wav
+Can't write audio to public/audio/381156251402379265.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156255898664961
+getting instance
+Wrote synthesized speech to public/audio/381156255898664961.wav
+Can't write audio to public/audio/381156255898664961.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156255898664961
+getting instance
+Wrote synthesized speech to public/audio/381156255898664961.wav
+Can't write audio to public/audio/381156255898664961.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156262592790528
+getting instance
+Can't find diphone y-t
+Can't find diphone y-t
+Wrote synthesized speech to public/audio/381156262592790528.wav
+Can't write audio to public/audio/381156262592790528.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156262592790528
+getting instance
+Can't find diphone y-t
+Can't find diphone y-t
+Wrote synthesized speech to public/audio/381156262592790528.wav
+Can't write audio to public/audio/381156262592790528.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156279424913408
+getting instance
+Wrote synthesized speech to public/audio/381156279424913408.wav
+Can't write audio to public/audio/381156279424913408.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156279424913408
+getting instance
+Wrote synthesized speech to public/audio/381156279424913408.wav
+Can't write audio to public/audio/381156279424913408.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156287188185088
+getting instance
+Wrote synthesized speech to public/audio/381156287188185088.wav
+Can't write audio to public/audio/381156287188185088.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156287188185088
+getting instance
+Wrote synthesized speech to public/audio/381156287188185088.wav
+Can't write audio to public/audio/381156287188185088.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156288060592128
+getting instance
+Can't find diphone w-m
+Can't find diphone w-m
+Wrote synthesized speech to public/audio/381156288060592128.wav
+Can't write audio to public/audio/381156288060592128.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156288060592128
+getting instance
+Can't find diphone w-m
+Can't find diphone w-m
+Wrote synthesized speech to public/audio/381156288060592128.wav
+Can't write audio to public/audio/381156288060592128.wav
+Sending a tweet to user 21860462
+**** SESSIONID: 21860462
+Received status with ID: 381156296969306114
+getting instance
+Wrote synthesized speech to public/audio/381156296969306114.wav
+Can't write audio to public/audio/381156296969306114.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156296969306114
+getting instance
+Wrote synthesized speech to public/audio/381156296969306114.wav
+Can't write audio to public/audio/381156296969306114.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156297258725376
+getting instance
+Wrote synthesized speech to public/audio/381156297258725376.wav
+Can't write audio to public/audio/381156297258725376.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156297258725376
+getting instance
+Wrote synthesized speech to public/audio/381156297258725376.wav
+Can't write audio to public/audio/381156297258725376.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156300781928449
+getting instance
+Wrote synthesized speech to public/audio/381156300781928449.wav
+Can't write audio to public/audio/381156300781928449.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156300781928449
+getting instance
+Wrote synthesized speech to public/audio/381156300781928449.wav
+Can't write audio to public/audio/381156300781928449.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156301167816704
+getting instance
+Wrote synthesized speech to public/audio/381156301167816704.wav
+Can't write audio to public/audio/381156301167816704.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156301167816704
+getting instance
+Wrote synthesized speech to public/audio/381156301167816704.wav
+Can't write audio to public/audio/381156301167816704.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156307681554433
+getting instance
+Wrote synthesized speech to public/audio/381156307681554433.wav
+Can't write audio to public/audio/381156307681554433.wav
+Sending a tweet to user 21860462
+Received status with ID: 381156307681554433
+getting instance
+Wrote synthesized speech to public/audio/381156307681554433.wav
+Can't write audio to public/audio/381156307681554433.wav
+Sending a tweet to user 21860462
+Terminate batch job (Y/N)? 

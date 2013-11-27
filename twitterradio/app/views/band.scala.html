@@ -1,0 +1,85 @@
+@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword)
+(implicit request: play.api.mvc.Request)
+
+@main(title="Radio", request.host+"/", page="band") {
+
+<script type="text/javascript">
+var asyncURL = "ws://@request.host/async/stream";
+var keyword = null;//"#michaeljackson";
+//var asyncURL = "ws://twitterradio.twitterradio.cloudbees.net/websockettest/async";
+$(document).ready(function() { 
+	initBand(asyncURL,keyword);
+});
+</script> 
+
+<div class="page-header">
+	<h1>@if(keyword != null) { keyword.text }</h1>
+</div>
+<div id="debug" style="position:absolute;top:50px;left:50px;right:50px;height:50px;">
+	<!-- <input type="button" id="loadtweets" name="loadtweets" value="Load tweets" />
+	<input type="button" id="addtweet" name="addtweet" value="Add tweet" />
+	<input type="button" id="animate" name="animate" value="Animate" />-->
+	<div id="audio-wrap"></div>
+</div>
+<div class="hero-unit" style="margin-top:30px;">
+	<div class="row" style="position:relative;">
+		<div id="addkeywordbtn" class="pull-right" style="margin:20px 0px 0px 20px;height:17px;"><a class="btn"><i class="icon-plus"></i> Add</a></div>
+		<div id="analog-wrap">
+			@currentBand.renderKeywords()
+			<div id="needle"></div>
+		</div>
+		<div id="radiobuttons">
+			<div class="pull-left" id="keyword-display" style="font-size:14px;"></div>
+			<div class="btn-group pull-right">
+				<a href="#start" class="btn" id="btn-fb"><i class="icon-fast-backward"></i></a>
+				<a href="#previous" class="btn" id="btn-prev"><i class="icon-backward"></i></a>
+				<a href="#start" class="btn" id="btn-stop"><i class="icon-stop"></i></a>
+				<a href="#start" class="btn" id="btn-playpause"><i class="icon-play"></i></a>
+				<a href="#start" class="btn" id="btn-next"><i class="icon-forward"></i></a>
+				<a href="#start" class="btn" id="btn-ff"><i class="icon-fast-forward"></i></a>
+			</div>
+		</div>
+		<div id="tweets-pane-wrap">
+			<div id="komparsos">Select a keyword to listen or add a new one using the button above</div>
+			<div id="tweets-pane-loader">
+				<div id="loadertext">Now Loading Tweets</div>
+				<div class="bubblingG">
+					<span id="bubblingG_1"></span>
+					<span id="bubblingG_2"></span>
+					<span id="bubblingG_3"></span>
+				</div>
+			</div>
+			<div id="tweets-pane"></div>
+		</div>
+		<div id="progress-bar-wrap">
+			<div id="progress-bar">
+				<div id="handle-wrap">
+					<div id="handle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="display:none;">
+  <div class="span4">
+    <h2>Statz</h2>
+    <p>Current user ID: @user.accountID</p>
+    <p>User's bands: @user.bands.size()</p>
+    <p>Current band ID: @currentBand.bandID</p>
+    <p>Current band name: @currentBand.bandName</p>
+  </div>
+  <div class="span4">
+    <h2>Current band</h2>
+    @for(k <- currentBand.keywords) {
+    <p>-@k.text</p>
+    }
+  </div>
+  <div class="span4">
+    <h2>Heading</h2>
+    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+</div>
+
+}

@@ -1,0 +1,61 @@
+@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword)
+(implicit request: play.api.mvc.Request)
+
+@main(title="Radio", request.host+"/", page="band") {
+
+<script type="text/javascript">
+var asyncURL = "ws://@request.host/websockettest/async";
+var keyword = "#michaeljackson";
+//var asyncURL = "ws://twitterradio.twitterradio.cloudbees.net/websockettest/async";
+$(document).ready(function() {
+	//TwitterRadio.init(asyncURL,keyword);
+});
+</script> 
+
+<div class="page-header">
+	<h1>@if(keyword != null) { keyword.text }</h1>
+</div>
+<div class="hero-unit">
+	<div class="tweets-pane-wrap">
+		<div class="tweets-pane">
+			<div class="tweet-wrap">
+				<div class="tweet-overlay"></div>
+				<div class="tweet-username">Username1</div>
+				<div class="tweet-text">Text 1</div>
+			</div>
+			<div class="tweet-wrap speaking">
+				<div class="tweet-overlay"></div>
+				<div class="tweet-username">Username2</div>
+				<div class="tweet-text">Text 2</div>
+			</div>
+			<div class="tweet-wrap">
+				<div class="tweet-overlay"></div>
+				<div class="tweet-username">Username3</div>
+				<div class="tweet-text">Text 3</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h2>Statz</h2>
+    <p>Current user ID: @user.accountID</p>
+    <p>User's bands: @user.bands.size()</p>
+    <p>Current band ID: @currentBand.bandID</p>
+    <p>Current band name: @currentBand.bandName</p>
+  </div>
+  <div class="span4">
+    <h2>Current band</h2>
+    @for(k <- currentBand.keywords) {
+    <p>-@k.text</p>
+    }
+  </div>
+  <div class="span4">
+    <h2>Heading</h2>
+    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn" href="#">View details &raquo;</a></p>
+  </div>
+</div>
+
+}

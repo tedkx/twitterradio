@@ -1,0 +1,32 @@
+@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword)
+(implicit request: play.api.mvc.Request)
+
+@main(title="Home", request.host+"/", page="index") {
+
+<script type="text/javascript">
+var asyncURL = "ws://@request.host/websockettest/async";
+var keyword = "#michaeljackson";
+//var asyncURL = "ws://twitterradio.twitterradio.cloudbees.net/websockettest/async";
+$(document).ready(function() {
+	//TwitterRadio.init(asyncURL,keyword);
+});
+</script> 
+
+<div class="page-header">
+	<h1>@if(keyword != null) { keyword.text }</h1>
+</div>
+<div class="hero-unit">
+	<div id="radio-interface">
+		This is the radio interface
+	</div>
+</div>
+
+<div class="row">
+
+</div>
+
+<div id="radio-station">
+	
+</div>
+
+}
