@@ -54,7 +54,7 @@ public class MediaManager {
 		}
 	}
 	
-	public MediaResult GetSongUrl(String searchString) {
+	public static MediaResult GetSongUrl(String searchString) {
 		try {
 			String url = "http://tinysong.com/b/";
 	
@@ -71,7 +71,7 @@ public class MediaManager {
 				result.title = node.findPath("ArtistName").asText() + " - " + node.findPath("SongName").asText();
 				result.url = node.findPath("Url").asText();
 				result.songID = node.findPath("SongID").asText();
-				addMedia(result);
+				getInstance().addMedia(result);
 			}
 	
 			return result;
@@ -81,9 +81,8 @@ public class MediaManager {
 		return null;
 	}
 	
-	public MediaResult SuggestSong() {
+	public static MediaResult SuggestSong() {
 		String suggestedSong = "Pineal gland optics";
-		addMedia(result);
 		return GetSongUrl(suggestedSong);
 	}
 }

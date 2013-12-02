@@ -48,7 +48,7 @@ function initBand(webSocketUri, keyword) {
 var Prompter = {
 	init: function() {
 		$(".modal#keywordbandmodal .btn").on("click", Prompter.keywordBandCallback);
-		//$(".modal#musicsettingsmodal .btn").on("click", Prompter.musicSettingsCallback);
+		$(".modal#musicsettingsmodal #musicsearchbtn").on("click", Prompter.musicSettingsCallback);
 		$('.alert-error').hide();
 		$(".modal").modal({
 			"backdrop" : "static",
@@ -82,7 +82,30 @@ var Prompter = {
 	musicSettingsCallback: function(e) {
 		e.stopPropagation();
 		var error = "";
-		alert('music settings persisted');
+		var val = $("#musicsearch").val();
+		if(val.replace(" ","") == "") { error = "No keywords inserted"; }
+		
+		if(error == "") {
+			$('#musicsettingsmodal .alert-error').hide();
+			$('#musicsearch').prop('disabled',true);
+			$('#musicsearchbtn').prop('disabled',true);
+			$('#musicsearchbtn').addClass("disabled");
+			MusicPlayer.makeMediaRequest(val);
+		} else {
+			$('#musicsettingsmodal .errortext').html(error);
+			$('#musicsettingsmodal .alert-error').show();
+		}
+	},
+	addSong: function(songID, text) {
+		$('#musicsearch').prop('disabled',false);
+		$('#musicsearchbtn').prop('disabled',false);
+		$('#musicsearchbtn').removeClass("disabled");
+		$('#song' + songID).remove();
+		$('#musiclist').append('<li id="song' + songID + '">' + text + '</li>');
+	},
+	setActiveSong: function(songID) {
+		$('#musiclist .active').removeClass('active');
+		$('#musiclist #song' + songID).addClass('active');
 	},
 	keywordBandCallback: function(e) {
 		e.stopPropagation();
@@ -106,6 +129,32 @@ var Prompter = {
 			$('#keywordbandmodal .alert-error').show();
 		}
 	},
+}
+
+var MusicPlayer = {
+	enabled: true,
+	currentSongID: null,
+	
+	makeMediaRequest: function(searchString) {
+		var url = baseURL + 'async/media';
+		if(typeof(searchString) != 'undefined') { url += "/" + searchString; }
+		$.ajax({
+			url: url,
+			type: "GET",
+			dataType: "json",
+			success: MusicPlayer.mediaResultCallback,
+			error: MusicPlayer.mediaResultCallback,
+		});
+	},
+	mediaResultCallback: function(data, status, errorOrXHR) {
+		if(status == "error") {
+			alert("Ajax Error: " + errorOrXHR);
+		} else {
+			//var obj = jQuery.parseJSON(data);
+			Prompter.addSong(data.songid, data.title);
+			alert("received object with id " + data.songid + " title" + data.title + " url " + data.url);
+		}
+	}
 }
 
 // Handles incoming requests, switches keywords etc
