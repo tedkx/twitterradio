@@ -65,7 +65,6 @@ public class MediaManager {
 			String response = U.GetJsonResult(url);
 			
 			MediaResult result = new MediaResult();
-			Console.print(response);
 			if(!response.startsWith("[]")) {
 				JsonNode node = Json.parse(response);
 				result.title = node.findPath("ArtistName").asText() + " - " + node.findPath("SongName").asText();
