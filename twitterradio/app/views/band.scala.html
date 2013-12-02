@@ -1,7 +1,7 @@
-@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword)
+@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword, media: List[models.db.MediaResult])
 (implicit request: play.api.mvc.Request)
 
-@main(title="Radio", request.host+"/", page="band") {
+@main(title="Radio", request.host+"/", page="band", media=media) {
 
 <script type="text/javascript">
 var asyncURL = "ws://@request.host/async/stream";
@@ -19,6 +19,7 @@ $(document).ready(function() {
 	<!-- <input type="button" id="loadtweets" name="loadtweets" value="Load tweets" />
 	<input type="button" id="addtweet" name="addtweet" value="Add tweet" />
 	<input type="button" id="animate" name="animate" value="Animate" />-->
+	<div id="music-wrap"></div>
 	<div id="audio-wrap"></div>
 </div>
 <div class="hero-unit" style="margin-top:30px;">

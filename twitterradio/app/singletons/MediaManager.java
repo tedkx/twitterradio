@@ -1,8 +1,11 @@
 package singletons;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import models.MediaResult;
+import java.util.List;
+
+import models.db.MediaResult;
+
 import org.codehaus.jackson.JsonNode;
 import play.libs.Json;
 import scala.Console;
@@ -11,67 +14,48 @@ import utils.U;
 public class MediaManager {
 
 	static String TINYSONG_API_KEY = "9351bb67a67e6f57eb2491b1571b9e96";
-	static MediaManager instance;
-	private HashMap<Long,LinkedList<MediaResult>> userResults;
 	
-	public MediaManager() {
-		userResults = new HashMap<Long,LinkedList<MediaResult>>();
+//	public static MediaManager getInstance() {
+//		if(instance == null) { instance = new MediaManager(); }
+//		return instance;
+//	}
+	
+	public static List<MediaResult> getMedia() {
+		return getMedia(AccountManager.getCurrentUser().accountID);
 	}
 	
-	public static MediaManager getInstance() {
-		if(instance == null) { instance = new MediaManager(); }
-		return instance;
+	public static List<MediaResult> getMedia(Long userID) {
+		List<MediaResult> results = MediaResult.find.where().eq("account_account_id", userID).findList();
+		if(results == null) { results = new ArrayList<MediaResult>(); }
+		return results;
 	}
 	
-	public MediaResult[] getMedia() {
-		return this.getMedia(AccountManager.getCurrentUser().accountID);
-	}
-	
-	public MediaResult[] getMedia(Long userID) {
-		ensureExists(userID);
-		truncate(userID);
-		MediaResult[] media = new MediaResult[] {  };
-		userResults.get(userID).toArray(media);
-		return media;
-	}
-	
-	public void truncate(Long userID) {
-		
-	}
-	
-	public void addMedia(MediaResult result) {
-		addMedia(result, AccountManager.getCurrentUser().accountID);
-	}
-	
-	public void addMedia(MediaResult result, Long userID){
-		ensureExists(userID);
-		userResults.get(userID).add(result);
+	public static void truncate(Long userID) {
+		for(MediaResult result : getMedia(userID)) { result.delete(); }
 	}
 
-	private void ensureExists(Long userID) {
-		if(!userResults.containsKey(userID) || userResults.get(userID) == null) {
-			userResults.put(userID, new LinkedList<MediaResult>());
-		}
+	public static void removeMedia(Long userID, int id) {
+		MediaResult media = MediaResult.find.byId(id);
+		Console.println("Media with id " + id + " is null: " + (media == null));
+		if(media != null) { media.delete(); }
 	}
-	
+
 	public static MediaResult GetSongUrl(String searchString) {
 		try {
 			String url = "http://tinysong.com/b/";
-	
-			url += java.net.URLEncoder.encode(searchString, "UTF-8");
-			url += "?format=json&key=" + TINYSONG_API_KEY;
-			U.out("Getting sentiment for text " + searchString);
-			
-			String response = U.GetJsonResult(url);
-			
-			MediaResult result = new MediaResult();
-			if(!response.startsWith("[]")) {
-				JsonNode node = Json.parse(response);
-				result.title = node.findPath("ArtistName").asText() + " - " + node.findPath("SongName").asText();
-				result.url = node.findPath("Url").asText();
-				result.songID = node.findPath("SongID").asText();
-				getInstance().addMedia(result);
+			String response = "";
+			if(searchString.contains("\\") || searchString.contains("/")) {
+				response = searchString;
+			} else {
+				url += java.net.URLEncoder.encode(searchString, "UTF-8");
+				url += "?format=json&key=" + TINYSONG_API_KEY;
+				response = U.GetJsonResult(url);
 			}
+			
+			Console.println("requesting: " + url);
+			Console.println("response: " + response);
+
+			MediaResult result = MediaResult.create(response, response == searchString);
 	
 			return result;
 		} catch (Exception ex) {

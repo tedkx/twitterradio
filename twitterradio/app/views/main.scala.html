@@ -1,4 +1,4 @@
-@(title: String, basePath: String, page: String)(content: Html)
+@(title: String, basePath: String, page: String, media: List[models.db.MediaResult])(content: Html)
 <!doctype html>
 
 <html>
@@ -40,10 +40,12 @@
 				<span>Music Playlist:</span><br/>
 				<div class="well" style="padding:2px 0px 2px 0px">
 					<ul class="nav nav-list" id="musiclist">
-						<li class="active" style="border-top:0;" id="song36004305">Meshuggah - Pineal Gland Optics<button class="close">&times;</button></li>
-						<li id="song36004306">Tex - Some random junk song</li>
+						@for(m <- media) {
+					    <li id="song@m.mediaResultID">@m.title<button class="close">&times;</button></li>
+					    }
 					</ul>
 				</div>
+				Search Online
 				<div class="row">
 					<div class="input-group span4">
 						<input type="text" name="musicsearch" id="musicsearch" class="form-control" style="width:100%;height:30px;" />
@@ -52,12 +54,24 @@
 						<button type="button" id="musicsearchbtn" class="btn">Search</button>
 					</div>
 				</div>
+				Add local file
+				<div class="row">
+					<div class="input-group span4">
+						<input type="file" name="musicfile" id="musicfile" class="form-control" style="width:100%;height:30px;" />
+					</div>
+					<div class="span2">
+						<button type="button" id="musicfilebtn" class="btn">Add</button>
+					</div>
+				</div>
 				<div class="alert alert-error">  
 					<a class="close" data-dismiss="alert">×</a>  
 					<strong>Error! </strong> <span class="errortext"></span>  
 				</div>
 			</div>
-			<div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Close</button></div>
+			<div class="modal-footer">
+				<button type="button" class="btn" id="musicclearbtn">Clear</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
 		</div>
 	</div>
 </div>

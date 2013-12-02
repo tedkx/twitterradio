@@ -5,6 +5,7 @@ import play.mvc.*;
 import scala.Console;
 import singletons.AccountManager;
 import singletons.BandManager;
+import singletons.MediaManager;
 import singletons.SessionBroker;
 import singletons.TtsBroker;
 import singletons.TwitterBroker;
@@ -29,7 +30,7 @@ public class Application extends Controller {
     	Console.println("**** SESSIONID: " + SessionBroker.getCurrentUserID());
     	BandManager.getInstance().removeBand();
     	Account user = AccountManager.getCurrentUser();
-        return ok(index.render(user, null, null));
+        return ok(index.render(user, null, null, MediaManager.getMedia()));
     }
 	
 	//@SecureSocial.SecuredAction
@@ -57,14 +58,14 @@ public class Application extends Controller {
 		}
 		BandManager.getInstance().setBand(user.accountID, band);
 		utils.U.out("keywords size: " + band.keywords.size());
-		return ok(views.html.band.render(user, band, null));
+		return ok(views.html.band.render(user, band, null, MediaManager.getMedia()));
 	}
 	
 	//@SecureSocial.SecuredAction
     public static Result keyword(String text) {
     	Band band = null;//BandManager.getInstance().getBand(true);
 		Account user = AccountManager.getCurrentUser();
-		return ok(index.render(user, band, Keyword.Create(text, user.accountID)));
+		return ok(index.render(user, band, Keyword.Create(text, user.accountID), MediaManager.getMedia()));
 	}
   
 	public static Result test()

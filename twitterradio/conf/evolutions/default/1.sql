@@ -29,6 +29,17 @@ create table keyword (
   constraint pk_keyword primary key (keyword_id))
 ;
 
+create table media_result (
+  media_result_id           integer auto_increment not null,
+  title                     varchar(255),
+  url                       varchar(255),
+  song_id                   varchar(255),
+  account_account_id        bigint,
+  created                   datetime,
+  is_local                  tinyint(1) default 0,
+  constraint pk_media_result primary key (media_result_id))
+;
+
 create table spoken (
   spoken_id                 integer auto_increment not null,
   user_id                   bigint,
@@ -75,6 +86,8 @@ create table tweet_keyword (
 ;
 alter table band add constraint fk_band_account_1 foreign key (account_account_id) references account (account_id) on delete restrict on update restrict;
 create index ix_band_account_1 on band (account_account_id);
+alter table media_result add constraint fk_media_result_account_2 foreign key (account_account_id) references account (account_id) on delete restrict on update restrict;
+create index ix_media_result_account_2 on media_result (account_account_id);
 
 
 
@@ -109,6 +122,8 @@ drop table keyword;
 drop table keyword_tweet;
 
 drop table keyword_band;
+
+drop table media_result;
 
 drop table spoken;
 

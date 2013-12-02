@@ -1,7 +1,7 @@
-@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword)
+@(user: models.db.Account, currentBand: models.db.Band, keyword: models.db.Keyword, media: List[models.db.MediaResult])
 (implicit request: play.api.mvc.Request)
 
-@main(title="Home", request.host+"/", page="index") {
+@main(title="Home", request.host+"/", page="index", media=media) {
 
 <script type="text/javascript">
 var asyncURL = "ws://@request.host/websockettest/async";

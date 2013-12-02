@@ -5,6 +5,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
 import play.mvc.With;
+import scala.Console;
+import singletons.AccountManager;
 import singletons.BandManager;
 import singletons.MediaManager;
 import singletons.SentimentManager;
@@ -60,5 +62,23 @@ public class Async extends Controller {
 	@With(BaseAction.class)
 	public static Result suggestMedia() {
 		return status(OK,MediaManager.SuggestSong().toJSON());
+	}
+	
+	/**
+	 * Deletes a user's saved media entry
+	 */
+	@With(BaseAction.class)
+	public static Result removeMedia(String id) {
+		MediaManager.removeMedia(AccountManager.getCurrentUser().accountID, Integer.valueOf(id));
+		return status(OK);
+	}
+	
+	/**
+	 * Deletes user's saved media list
+	 */
+	@With(BaseAction.class)
+	public static Result clearMedia() {
+		MediaManager.truncate(AccountManager.getCurrentUser().accountID);
+		return status(OK);
 	}
 }

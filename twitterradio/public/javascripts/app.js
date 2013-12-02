@@ -23,6 +23,7 @@ function initMenu() {
 	settingsInitialized = true;
 	
 	Prompter.init();
+	MusicPlayer.init();
 	//stop setting dropdown menu item from closing on click
 	$('.on-off-setting').on('click',function(event){
 		event.stopPropagation();
@@ -48,7 +49,9 @@ function initBand(webSocketUri, keyword) {
 var Prompter = {
 	init: function() {
 		$(".modal#keywordbandmodal .btn").on("click", Prompter.keywordBandCallback);
-		$(".modal#musicsettingsmodal #musicsearchbtn").on("click", Prompter.musicSettingsCallback);
+		$(".modal#musicsettingsmodal #musicsearchbtn").on("click", Prompter.musicSearchCallback);
+		$(".modal#musicsettingsmodal #musicfilebtn").on("click", Prompter.musicFileCallback);
+		$(".modal#musicsettingsmodal #musicclearbtn").on("click", MusicPlayer.clearMedia);
 		$('.alert-error').hide();
 		$(".modal").modal({
 			"backdrop" : "static",
@@ -79,29 +82,31 @@ var Prompter = {
 		$('.modal#keywordbandmodal').modal('show');
 		$('#keywordbandmodal #input').focus();
 	},
-	musicSettingsCallback: function(e) {
+	musicFileCallback: function(e) {
+		e.stopPropagation();
+		var error = "";
+		var val = $("#musicfile").val();
+		if(val.replace(" ","") == "") { error = "No file selected"; }
+		val = encodeURIComponent(val);
+		if(error == "") {
+			MusicPlayer.hideErrors();
+			MusicPlayer.makeMediaRequest(val);
+		} else {
+			MusicPlayer.showError(error);
+		}
+	},
+	musicSearchCallback: function(e) {
 		e.stopPropagation();
 		var error = "";
 		var val = $("#musicsearch").val();
 		if(val.replace(" ","") == "") { error = "No keywords inserted"; }
 		
 		if(error == "") {
-			$('#musicsettingsmodal .alert-error').hide();
-			$('#musicsearch').prop('disabled',true);
-			$('#musicsearchbtn').prop('disabled',true);
-			$('#musicsearchbtn').addClass("disabled");
+			MusicPlayer.hideErrors();
 			MusicPlayer.makeMediaRequest(val);
 		} else {
-			$('#musicsettingsmodal .errortext').html(error);
-			$('#musicsettingsmodal .alert-error').show();
+			MusicPlayer.showError(error);
 		}
-	},
-	addSong: function(songID, text) {
-		$('#musicsearch').prop('disabled',false);
-		$('#musicsearchbtn').prop('disabled',false);
-		$('#musicsearchbtn').removeClass("disabled");
-		$('#song' + songID).remove();
-		$('#musiclist').append('<li id="song' + songID + '">' + text + '</li>');
 	},
 	setActiveSong: function(songID) {
 		$('#musiclist .active').removeClass('active');
@@ -135,8 +140,67 @@ var MusicPlayer = {
 	enabled: true,
 	currentSongID: null,
 	
+	init: function() {
+		$('#musiclist .close').on('click',function() { MusicPlayer.removeSong($(this).parent()); });
+		if('#music-wrap').size() > 0) {
+			
+		}
+	},
+	setUIEnabled: function(enabled) {
+		if(enabled) {
+			$('#musicsearch').prop('disabled',false);
+			$('#musicsearchbtn').prop('disabled',false);
+			$('#musicsearchbtn').removeClass("disabled");
+			$('#musicfile').prop('disabled',false);
+			$('#musicfilebtn').prop('disabled',false);
+			$('#musicfilebtn').removeClass("disabled");
+		} else {
+			$('#musicsearch').prop('disabled',true);
+			$('#musicsearchbtn').prop('disabled',true);
+			$('#musicsearchbtn').addClass("disabled");
+			$('#musicfile').prop('disabled',true);
+			$('#musicfilebtn').prop('disabled',true);
+			$('#musicfilebtn').addClass("disabled");
+		}
+	},
+	showError: function(errorText) {
+		$('#musicsettingsmodal .errortext').html(errorText);
+		$('#musicsettingsmodal .alert-error').show();
+	},
+	hideErrors: function() {
+		$('#musicsettingsmodal .alert-error').hide();
+		$('#musicsettingsmodal .errortext').html('');
+	},
+	addSong: function(song) {
+		$('#song' + song.mediaid).remove();
+		var songElem = $('<li id="song' + song.mediaid + '">' + song.title + '<button class="close">&times;</button></li>');
+		songElem.data("songID",song.songid);
+		$('#musiclist').append(songElem);
+		songElem.find('.close').on('click',function() { MusicPlayer.removeSong($(this).parent()); });
+		
+		var musicAudioHtml = $("<audio id=\"audio-song-" + song.id + "\" src=\"" + song.url + "\" type=\"audio/wave\"></audio>");
+		tweetAudioHtml.on('ended',Player.sound_ended);
+		$('#audio-wrap').append(tweetAudioHtml);
+	},
+	removeSong: function(elem) {
+		elem.remove();
+		$.ajax({
+			url: baseURL + 'async/media/remove/' + elem.attr('id').replace('song',''),
+			type: "GET"
+		});
+	},
+	clearMedia: function() {
+		//stop music
+		$('#mediawrap').html('');
+		$('#musiclist').html('');
+		$.ajax({
+			url: baseURL + 'async/media/clear',
+			type: "GET"
+		});
+	},
 	makeMediaRequest: function(searchString) {
-		var url = baseURL + 'async/media';
+		MusicPlayer.setUIEnabled(false);
+		var url = baseURL + 'async/media/get';
 		if(typeof(searchString) != 'undefined') { url += "/" + searchString; }
 		$.ajax({
 			url: url,
@@ -147,13 +211,27 @@ var MusicPlayer = {
 		});
 	},
 	mediaResultCallback: function(data, status, errorOrXHR) {
+		MusicPlayer.setUIEnabled(true);
 		if(status == "error") {
 			alert("Ajax Error: " + errorOrXHR);
+		} else if(typeof(data.songid) != 'undefined') {
+			var fl = $('#musicfile');
+			fl.replaceWith(fl = fl.clone(true));
+			$('#musicsearch').val('');
+			MusicPlayer.addSong(data);
 		} else {
-			//var obj = jQuery.parseJSON(data);
-			Prompter.addSong(data.songid, data.title);
-			alert("received object with id " + data.songid + " title" + data.title + " url " + data.url);
+			MusicPlayer.showError("No related media found");
 		}
+	},
+	
+	play: function() {
+		
+	},
+	stop: function() {
+		
+	},
+	beginPrefetch: function() {
+		
 	}
 }
 

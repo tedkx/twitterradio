@@ -1,7 +1,7 @@
 @(errorText: String)
 (implicit request: play.api.mvc.Request)
 
-@main(title="Error", request.host+"/", page="error") {
+@main(title="Error", request.host+"/", page="error", null) {
 
 <div class="row">
 	@errorText
