@@ -4,6 +4,16 @@ body { background:transparent url('../img/bg.jpg') center top repeat; }
 	background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(230, 230, 230));
 }
 
+#musiclist {
+	padding:0;
+}
+#musiclist li {
+	border-top:solid 1px #CCC;padding-left:5px;
+}
+#musiclist li.active { 
+	background-color:#08C;color:white;
+}
+
 .hero-unit {
 	background: none repeat scroll 0% 0% rgba(230, 230, 230, 0.5);
 	border: 1px solid rgba(255, 255, 255, 0.3);

@@ -6,30 +6,59 @@ import play.mvc.Result;
 import play.mvc.WebSocket;
 import play.mvc.With;
 import singletons.BandManager;
+import singletons.MediaManager;
 import singletons.SentimentManager;
 import singletons.WebSocketManager;
 
 public class Async extends Controller {
 	
+	/**
+	 * Gets the current trends wrapped in a Band object
+	 * @return Trends Band
+	 */
 	@With(BaseAction.class)
 	public static Result trends() {
 		ctx().response().setHeader("Content-Type", "application/json; charset=UTF-8");
 		return status(OK,BandManager.getInstance().getTrendsBand().toJson());
 	}
 	
+	/**
+	 * Initializes a websocket to transfer tweets to the client
+	 * @return
+	 */
 	@With(BaseAction.class)
 	public static WebSocket<String> stream() {
 		return WebSocketManager.getInstance().initializeSocket();
 	}
 	
+	/**
+	 * Sentiment test action. 
+	 * @deprecated Not used. Just for testing
+	 * @return
+	 */
 	@With(BaseAction.class)
 	public static Result sentiment() {
 		Tweet tweet = new Tweet(12345678L, "some status", "username");
 		return status(OK,SentimentManager.getInstance().process(tweet));
 	}
 	
-	public static Result medialink() {
-		//JsonNode json = request().body().asJson();
-		//9351bb67a67e6f57eb2491b1571b9e96
+	/**
+	 * Searches for a song with the selected text. 
+	 * @param text The text to search songs for
+	 * @return A string with the song URL, null if nothing found
+	 */
+	@With(BaseAction.class)
+	public static Result getMedia(String text) {
+		return status(OK,MediaManager.GetSongUrl(text).toJSON());
+	}
+	
+	/**
+	 * Searches for a song based on user's last 10 listened tweets
+	 * @param text The text to search songs for
+	 * @return A string with the song URL, null if nothing found
+	 */
+	@With(BaseAction.class)
+	public static Result suggestMedia() {
+		return status(OK,MediaManager.SuggestSong().toJSON());
 	}
 }

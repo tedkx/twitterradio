@@ -6,10 +6,6 @@
 <script type="text/javascript">
 var asyncURL = "ws://@request.host/websockettest/async";
 var keyword = "#michaeljackson";
-//var asyncURL = "ws://twitterradio.twitterradio.cloudbees.net/websockettest/async";
-$(document).ready(function() {
-	//TwitterRadio.init(asyncURL,keyword);
-});
 </script>
 <style>
 .homediv { font-size:14px;line-height:23px;margin-top:25px; }
@@ -24,13 +20,15 @@ $(document).ready(function() {
 			<p>Create a new radio band and add keywords to it like radio stations using the Bands menu.</p>
 			<p><a class="btn" href="#" onclick="Prompter.createBandDialog();" style="margin-top:30px;">Create Band &raquo;</a></p>
 		</div>
-		<div class="span1"></div>
-		<div class="span3 homediv">
+		<div class="span3 homediv" style="margin-left:5px;">
 			<p>Play today's trends using the predefined Trends band</p>
 			<p><a class="btn" href="band/trends" style="margin-top:53px;">Listen Trends &raquo;</a></p>
 		</div>
-		<div class="span1"></div>
-		<div class="span3 homediv">
+		<div class="span3 homediv"style="margin-left:0px;">
+			<p>Listen to music tracks suggested based on the last tweets played. You can also add your
+			selections from the cloud or local library.
+		</div>
+		<div class="span3 homediv"style="margin-left:5px;">
 			<p>By default, every tweet has a different color based on the perceived sentiment of its text,
 		<span style="background-color:#99FF99;">positive</span> or <span style="background-color:#FF9999">negative</span>.
 			You can disable this from the settings menu.</p></div>

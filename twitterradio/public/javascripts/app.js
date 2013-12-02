@@ -3,7 +3,6 @@ $(document).ready(function() {
 	baseURL = 'http://' + pathArray[2] + "/";
 	
 	initMenu();
-	Prompter.init();
 	
 	//make sure WebSocket closes when user leaves the page
 	$(window).on('unload', function(){
@@ -17,10 +16,13 @@ $(document).ready(function() {
 var settingsInitialized = false;
 var baseURL = null;
 function initMenu() {
-	$('a#createband').click(Prompter.createBandDialog)
+	$('a#createband').click(Prompter.createBandDialog);
+	$('a#musicsettingslink').click(Prompter.creatMusicSettingsDialog);
 	
 	if(settingsInitialized) { return; }
 	settingsInitialized = true;
+	
+	Prompter.init();
 	//stop setting dropdown menu item from closing on click
 	$('.on-off-setting').on('click',function(event){
 		event.stopPropagation();
@@ -45,7 +47,8 @@ function initBand(webSocketUri, keyword) {
 //Presents dialogs and handles their output
 var Prompter = {
 	init: function() {
-		$(".modal .btn").on("click", Prompter.dialogCallback);
+		$(".modal#keywordbandmodal .btn").on("click", Prompter.keywordBandCallback);
+		//$(".modal#musicsettingsmodal .btn").on("click", Prompter.musicSettingsCallback);
 		$('.alert-error').hide();
 		$(".modal").modal({
 			"backdrop" : "static",
@@ -55,40 +58,52 @@ var Prompter = {
 	},
 	createBandDialog: function(e) {
 		if(e && e.preventDefault) {	e.preventDefault(); }
-		Prompter.showDialog('band');
+		Prompter.showKeywordBandDialog('band');
 	},
 	createKeywordDialog: function(e) {
 		e.preventDefault();
-		Prompter.showDialog("keyword")
+		Prompter.showKeywordBandDialog("keyword")
 	},
-	showDialog: function(inputType) {
+	creatMusicSettingsDialog: function(e) {
+		e.preventDefault();
 		$('.alert-error').hide();
-		$('.modal #keywordband').html((inputType == 'band') ? 'Band Name (no spaces allowed):' : 'New Keyword:');
-		$('#input-type').val(inputType);
-		$('#input').val("");
-		$('.modal').modal('show');
-		$('#input').focus();
+		$('#musicsettingsmodal #input').val("");
+		$('.modal#musicsettingsmodal').modal('show');
+		$('#musicsettingsmodal #input').focus();
 	},
-	dialogCallback: function(e) {
+	showKeywordBandDialog: function(inputType) {
+		$('.alert-error').hide();
+		$('.modal#keywordbandmodal #keywordband').html((inputType == 'band') ? 'Band Name (no spaces allowed):' : 'New Keyword:');
+		$('#keywordbandmodal #input-type').val(inputType);
+		$('#keywordbandmodal #input').val("");
+		$('.modal#keywordbandmodal').modal('show');
+		$('#keywordbandmodal #input').focus();
+	},
+	musicSettingsCallback: function(e) {
 		e.stopPropagation();
 		var error = "";
-		inputType = $('#input-type').val();
-		var value = $('#input').val();
+		alert('music settings persisted');
+	},
+	keywordBandCallback: function(e) {
+		e.stopPropagation();
+		var error = "";
+		inputType = $('#keywordbandmodal #input-type').val();
+		var value = $('#keywordbandmodal #input').val();
 		if(value.length == 0) { error = "Name cannot be empty." };
 		if(inputType == "band" && value.toLowerCase() == "trends") { error = "Trends is a reserved word, sorry."};
 		if(inputType == "band" && value.indexOf(" ") > -1) { error = "No spaces are allowed"; }
 		if(inputType == "keyword" && $('.keyword:contains("' + value + '")').size() > 0) { error = "You have already added that keyword."; }
 		if(error == "") {
-			$('.alert-error').hide();
-			$('.modal').modal('hide');
+			$('#keywordbandmodal .alert-error').hide();
+			$('#keywordbandmodal.modal').modal('hide');
 			if(inputType == 'band') {
 				window.location = baseURL + "band/" + value;
 			} else {
 				RadioStation.addKeyword(value);
 			}
 		} else {
-			$('#errortext').html(error);
-			$('.alert-error').show();
+			$('#keywordbandmodal .errortext').html(error);
+			$('#keywordbandmodal .alert-error').show();
 		}
 	},
 }
