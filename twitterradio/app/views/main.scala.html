@@ -39,11 +39,7 @@
 			<div class="modal-body">
 				<span>Music Playlist:</span><br/>
 				<div class="well" style="padding:2px 0px 2px 0px">
-					<ul class="nav nav-list" id="musiclist">
-						@for(m <- media) {
-					    <li id="song@m.mediaResultID">@m.title<button class="close">&times;</button></li>
-					    }
-					</ul>
+					<ul class="nav nav-list" id="musiclist"></ul>
 				</div>
 				Search Online
 				<div class="row">
@@ -75,6 +71,13 @@
 		</div>
 	</div>
 </div>
+<script>
+window.initialSongs = [
+@for(m <- media) {
+	{ id: "@m.mediaResultID", title: "@m.title", url: "@m.url", songID: "@m.songID" },
+}
+	];
+</script>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -113,11 +116,11 @@
 								    </label>
 								</div>							
 							</li>
-							<li class="on-off-setting" id="autoplay">
+							<li class="on-off-setting" id="musiconoff">
 								<div class="pull-right" style="margin:3px 5px 0px 0px">Music</div>
 								<div class="onoffswitch">
 								    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="musiconoffswitch" checked>
-								    <label class="onoffswitch-label" for=""musiconoffswitch"">
+								    <label class="onoffswitch-label" for="musiconoffswitch">
 								        <div class="onoffswitch-inner"></div>
 								        <div class="onoffswitch-switch"></div>
 								    </label>
@@ -145,6 +148,6 @@
 <script src="@routes.Assets.at("javascripts/bootbox.min.js")" type="text/javascript"></script>
 <script src="@routes.Assets.at("javascripts/app.js")" type="text/javascript"></script>
 <script src="@routes.Assets.at("javascripts/debug.js")" type="text/javascript"></script>
-
+<script src="http://www.youtube.com/player_api"></script>
 </body>
 </html>

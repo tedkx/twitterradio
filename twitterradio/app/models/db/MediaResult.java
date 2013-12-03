@@ -16,6 +16,7 @@ import play.db.ebean.Model.Finder;
 import play.libs.Json;
 import scala.Console;
 import singletons.AccountManager;
+import singletons.MediaManager;
 
 @Entity
 public class MediaResult extends Model {
@@ -56,14 +57,17 @@ public class MediaResult extends Model {
 		else if(!jsonResponse.startsWith("[]")) {
 			JsonNode node = Json.parse(jsonResponse);
 			if(node.findPath("error").asText().length() == 0) { 
-				String songID = node.findPath("SongID").asText();
+				String artistName = node.findPath("ArtistName").asText();
+				String songName = node.findPath("SongName").asText();
+				String songID = MediaManager.fetchMediaID(artistName + " " + songName, result.account.musicProvider);
+				if(songID == null) { return result; }
 				MediaResult existing = find.where().and(
 						Expr.eq("account_account_id", result.account.accountID),
 						Expr.eq("song_id", songID)).findUnique();
 				if(existing != null) { 
 					result = existing;
 				} else {
-					result.title = node.findPath("ArtistName").asText() + " - " + node.findPath("SongName").asText();
+					result.title = artistName + " - " + songName;
 					result.url = node.findPath("Url").asText();
 					result.songID = songID;
 				}

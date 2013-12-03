@@ -17,6 +17,7 @@ public class Account extends Model {
     public String token;
     public String secret;
     public int trendsBandID;
+    public String musicProvider;
     
     @OneToMany(cascade = CascadeType.ALL)
     @Column(nullable = true)

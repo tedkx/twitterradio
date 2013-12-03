@@ -12,7 +12,7 @@ $(document).ready(function() {
 		}
 	});
 });
-
+function onYouTubePlayerAPIReady() { MusicPlayer.init(); }
 var settingsInitialized = false;
 var baseURL = null;
 function initMenu() {
@@ -23,12 +23,13 @@ function initMenu() {
 	settingsInitialized = true;
 	
 	Prompter.init();
-	MusicPlayer.init();
+	//MusicPlayer.init();
 	//stop setting dropdown menu item from closing on click
 	$('.on-off-setting').on('click',function(event){
 		event.stopPropagation();
 		if($(this).attr("id") == "sentiment") { RadioStation.toggleSentiment(); }
 		if($(this).attr("id") == "autoplay") { RadioStation.toggleAutoplay(); }
+		if($(this).attr("id") == "musiconoff") { MusicPlayer.toggle(); }
 	});
 }
 
@@ -136,14 +137,44 @@ var Prompter = {
 	},
 }
 
+//Handles music playback, using a provider to provide abstraction.
+//Initializes and then awaits provider to be ready in order to start playback
 var MusicPlayer = {
 	enabled: true,
+	status: "stopped",
+	currentIndex: -1,
 	currentSongID: null,
+	provider: null,
 	
 	init: function() {
-		$('#musiclist .close').on('click',function() { MusicPlayer.removeSong($(this).parent()); });
-		if('#music-wrap').size() > 0) {
-			
+		$('#musiclist .close').on('click',function() { MusicPlayer.removeMedia($(this).parent()); });
+		if(typeof(window.initialSongs) != 'undefined') {
+			for(var i = 0;i < window.initialSongs.length; i++) {
+				var s = window.initialSongs[i];
+				var elem = $('<li id="song' + s.id + '">' + s.title + '<button class="close">&times;</button></li>');
+				$('#musiclist').append(elem);
+				elem.data('songID',s.songID);
+				elem.data('url',s.url);	
+				MusicPlayer.wireUIEvents(elem);
+			}
+		}
+		if($('#music-wrap').size() > 0) {
+			MusicPlayer.provider = YouTubeProvider;
+			MusicPlayer.provider.init();
+		}
+	},
+	providerReady: function() {
+		MusicPlayer.play();
+	},
+	setStatus: function(playing) {
+		if(playing) { MusicPlayer.status = "playing"}
+		else { MusicPlayer.status = "stopped"; }
+	},
+	toggle: function() {
+		if($('#musiconoff .onoffswitch-inner').css("margin-left") == "0px") {
+			MusicPlayer.stop();
+		} else {
+			MusicPlayer.play();
 		}
 	},
 	setUIEnabled: function(enabled) {
@@ -163,6 +194,24 @@ var MusicPlayer = {
 			$('#musicfilebtn').addClass("disabled");
 		}
 	},
+	getNextSongElem: function() {
+		MusicPlayer.currentIndex++;
+		var elem = $('#musiclist li:eq(' + MusicPlayer.currentIndex + ')');
+		if(elem.size() == 0) { 
+			MusicPlayer.currentIndex = 0;
+			elem = $('#musiclist li:eq(' + MusicPlayer.currentIndex + ')');
+		}
+		return elem;
+	},
+	wireUIEvents: function(elem){
+		if($('#music-wrap').size() > 0) {
+			elem.on('click', function() {
+				MusicPlayer.stop();
+				MusicPlayer.play($(this));
+			});
+		}
+		elem.find('.close').on('click',function() { MusicPlayer.removeMedia($(this).parent()); });
+	},
 	showError: function(errorText) {
 		$('#musicsettingsmodal .errortext').html(errorText);
 		$('#musicsettingsmodal .alert-error').show();
@@ -171,27 +220,29 @@ var MusicPlayer = {
 		$('#musicsettingsmodal .alert-error').hide();
 		$('#musicsettingsmodal .errortext').html('');
 	},
-	addSong: function(song) {
+	addMedia: function(song) {
 		$('#song' + song.mediaid).remove();
 		var songElem = $('<li id="song' + song.mediaid + '">' + song.title + '<button class="close">&times;</button></li>');
 		songElem.data("songID",song.songid);
+		songElem.data("url",song.url);
 		$('#musiclist').append(songElem);
-		songElem.find('.close').on('click',function() { MusicPlayer.removeSong($(this).parent()); });
+		MusicPlayer.wireUIEvents(songElem);
 		
-		var musicAudioHtml = $("<audio id=\"audio-song-" + song.id + "\" src=\"" + song.url + "\" type=\"audio/wave\"></audio>");
-		tweetAudioHtml.on('ended',Player.sound_ended);
-		$('#audio-wrap').append(tweetAudioHtml);
+		MusicPlayer.provider.addMedia(song);
 	},
-	removeSong: function(elem) {
+	removeMedia: function(elem) {
+		var elemData = elem.data(); //keep this, when elem is removed, so is its data
 		elem.remove();
 		$.ajax({
 			url: baseURL + 'async/media/remove/' + elem.attr('id').replace('song',''),
 			type: "GET"
 		});
+		if(typeof(MusicPlayer.provider.removeMedia) == 'function') { MusicPlayer.provider.removeMedia(elemData); }
 	},
 	clearMedia: function() {
-		//stop music
-		$('#mediawrap').html('');
+		MusicPlayer.stop();
+		if(typeof(MusicPlayer.provider.clearMedia) == 'function') { MusicPlayer.provider.clearMedia(); }
+		$('#music-wrap').html('');
 		$('#musiclist').html('');
 		$.ajax({
 			url: baseURL + 'async/media/clear',
@@ -218,22 +269,97 @@ var MusicPlayer = {
 			var fl = $('#musicfile');
 			fl.replaceWith(fl = fl.clone(true));
 			$('#musicsearch').val('');
-			MusicPlayer.addSong(data);
+			MusicPlayer.addMedia(data);
 		} else {
 			MusicPlayer.showError("No related media found");
 		}
 	},
 	
-	play: function() {
-		
+	play: function(elem) {
+		if(typeof(elem) == 'undefined' || elem.size() == 0) {
+			elem = MusicPlayer.getNextSongElem();
+		} else {
+			MusicPlayer.currentIndex = elem.index();
+		}
+		$('#musiclist .active').removeClass('active');
+		elem.addClass('active');
+		MusicPlayer.setStatus(true);
+		MusicPlayer.provider.play(elem);
+	},
+	ended: function(e) {
+		MusicPlayer.stop();
+		MusicPlayer.beginPrefetch();
+		MusicPlayer.play();
 	},
 	stop: function() {
-		
+		$('#musiclist .active').removeClass('active');
+		MusicPlayer.setStatus(false);
+		MusicPlayer.provider.stop();
 	},
 	beginPrefetch: function() {
-		
+		var shouldPrefetch = ($('#musiclist').size() - MusicPlayer.currentIndex < 2); 
+		alert(MusicPlayer.currentIndex + ' of ' + $("#musiclist").size() + ", should prefetch: " + shouldPrefetch);
 	}
-}
+};
+
+var YouTubeProvider = {
+	player: null,
+	
+	init: function() {
+		$('body').append($('<div id="ytplayer" style="width:400px;height:300px;"></div>'));
+    	YouTubeProvider.player = new YT.Player('ytplayer', {
+			height: '390',
+			width: '640',
+			events: {
+				'onReady': YouTubeProvider.playerReady,
+				'onStateChange': YouTubeProvider.playerStateChange
+			}
+        });
+	},
+	
+	addMedia: function() { },
+	removeMedia: function(elemData) {
+		if(elemData.songID == YouTubeProvider.player.getVideoData().video_id) {
+			YouTubeProvider.player.stopVideo();
+			MusicPlayer.ended(null);
+		}
+	},
+	
+	playerReady: function(e) {
+		MusicPlayer.providerReady();
+	},
+	
+	playerStateChange: function(e) {
+		if(e.data == -1) {  } //video was stopped
+		if(e.data == 0) { //video ended
+			MusicPlayer.ended(e);
+		}
+	},
+	
+	play: function(elem) {
+		var songID = elem.data("songID");
+		YouTubeProvider.player.loadVideoById(songID);
+	},
+	
+	stop: function() {
+		YouTubeProvider.player.stopVideo();
+	}
+};
+
+var GroovesharProvider = {
+	
+	addMedia: function(song) {
+		if($("#music-wrap").size() > 0) {
+			var musicAudioHtml = $("<audio id=\"audio-song-" + song.id + "\" src=\"" + song.url + "\" type=\"audio/wave\"></audio>");
+			tweetAudioHtml.on('ended',Player.sound_ended);
+			$('#music-wrap').append(tweetAudioHtml);
+		}
+	}
+};
+
+var SpotifyProvider = {
+	
+};
 
 // Handles incoming requests, switches keywords etc
 var RadioStation = {

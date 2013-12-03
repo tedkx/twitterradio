@@ -9,6 +9,7 @@ create table account (
   token                     varchar(255),
   secret                    varchar(255),
   trends_band_id            integer,
+  music_provider            varchar(255),
   constraint pk_account primary key (account_id))
 ;
 
