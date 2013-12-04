@@ -33,6 +33,8 @@ create table keyword (
 create table media_result (
   media_result_id           integer auto_increment not null,
   title                     varchar(255),
+  artist_name               varchar(255),
+  song_name                 varchar(255),
   url                       varchar(255),
   song_id                   varchar(255),
   account_account_id        bigint,

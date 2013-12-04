@@ -27,7 +27,7 @@ function initMenu() {
 			orientation: "vertical",
 			tooltip: "hide",
 			max: 100,
-			value:0			
+			value:50			
 		}).on('slide', function(e) { 
 			MusicPlayer.setVolume(100 - e.value);
 		}); 
@@ -186,10 +186,19 @@ var MusicPlayer = {
 		if(MusicPlayer.provider != null && typeof(MusicPlayer.provider.addMedia) == 'function') { 
 			MusicPlayer.provider.addMedia(song); 
 		}
+		if(MusicPlayer.status == "stopped") { MusicPlayer.play(); }
 	},
 	beginPrefetch: function() {
-		var shouldPrefetch = ($('#musiclist').size() - MusicPlayer.currentIndex < 2); 
-		alert(MusicPlayer.currentIndex + ' of ' + $("#musiclist").size() + ", should prefetch: " + shouldPrefetch);
+		var shouldPrefetch = ($('#musiclist li').size() - MusicPlayer.currentIndex <= 2); 
+		if(shouldPrefetch) {
+			$.ajax({
+				url: baseURL + 'async/media/suggest',
+				type: "GET",
+				dataType: "json",
+				success: MusicPlayer.mediaResultCallback,
+				error: MusicPlayer.mediaResultCallback,
+			});
+		}
 	},
 	clearMedia: function() {
 		MusicPlayer.stop();
@@ -315,6 +324,7 @@ var MusicPlayer = {
 		if($('#music-wrap').size() > 0) {
 			elem.on('click', function() {
 				MusicPlayer.stop();
+				MusicPlayer.beginPrefetch();
 				MusicPlayer.play($(this));
 			});
 		}
@@ -326,7 +336,7 @@ var YouTubeProvider = {
 	player: null,
 	
 	init: function() {
-		$('body').append($('<div id="ytplayer" style="width:400px;height:300px;"></div>'));
+		$('body').append($('<div id="ytplayer" style="width:1px;height:1px;"></div>'));
     	YouTubeProvider.player = new YT.Player('ytplayer', {
 			height: '100',
 			width: '200',
@@ -337,9 +347,8 @@ var YouTubeProvider = {
         });
 	},
 	
-	addMedia: function() { },
 	playerReady: function(e) {
-		YouTubeProvider.player.setVolume(100);
+		YouTubeProvider.player.setVolume(50);
 		MusicPlayer.providerReady();
 	},
 	playerStateChange: function(e) {

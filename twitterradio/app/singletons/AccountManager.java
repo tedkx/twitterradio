@@ -58,6 +58,7 @@ public class AccountManager {
 			acc.fullName = user.fullName();
 			acc.token = (U.DEBUG) ? U.getProperty("twadio.MyToken") : user.oAuth1Info().get().token();
 			acc.secret = (U.DEBUG) ? U.getProperty("twadio.MySecret") : user.oAuth1Info().get().secret();
+			acc.musicProvider = "youtube";
 			acc.save();
 			accounts.put(acc.accountID, acc);
 		}

@@ -61,12 +61,36 @@ public class MediaManager {
 		} catch (Exception ex) {
 			Console.print("GetSongURL error: " + ex.getMessage());
 		}
-		return null;
+		return new MediaResult();
 	}
 	
 	public static MediaResult SuggestSong() {
-		String suggestedSong = "Pineal gland optics";
-		return GetSongUrl(suggestedSong);
+		String url = "http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&api_key=ab7632dcd98a80f664a6087562612279&format=json&limit=5";
+		try {
+			List<MediaResult> userMedia = MediaResult.find
+					.where()
+					.eq("account_account_id", AccountManager.getCurrentUser().accountID)
+					.order().desc("created")
+					.setMaxRows(5)
+					.findList();
+			for(MediaResult mediaResult : userMedia) {
+				String params = "&artist=" + java.net.URLEncoder.encode(mediaResult.artistName, "UTF-8");
+				params += "&track=" + java.net.URLEncoder.encode(mediaResult.songName, "UTF-8");
+				U.out("last.fm request: " + url + params);
+				String r = U.GetJsonResult(url + params);
+				JsonNode response = Json.parse(r);
+				String error = response.findPath("error").asText();
+				if(error == "11" || error == "26" || error == "29") { break; } //Rate limit or service offline
+				if(error.length() > 0) { continue; }
+				MediaResult newResult = MediaResult.create(response);
+				if(!newResult.isDummy()) {
+					return newResult;
+				}
+			}
+		} catch (Exception ex) {
+			Console.print("GetSongURL error: " + ex.getMessage());
+		}
+		return new MediaResult();
 	}
 	
 	public static String fetchMediaID(String title, String accountProvider){
@@ -79,10 +103,10 @@ public class MediaManager {
 	public static String GetYoutubeID(String searchTerm) {
 		String result = null;
 		try {
-			U.out("Querying youtube for " + searchTerm);
 			String url = "https://gdata.youtube.com/feeds/api/videos";
 			url += "?q=" + java.net.URLEncoder.encode(searchTerm, "UTF-8");
 			url += "&orderby=relevance&max-results=1&v=2&alt=json&fields=entry/id,entry/content";//&key=" + YOUTUBE_API_KEY;
+			U.out("yourube request: " + url);
 			JsonNode response = Json.parse(U.GetJsonResult(url));
 			result = response.findPath("feed").findPath("entry").get(0).findPath("id").findPath("$t").asText();
 			result = result.substring(result.lastIndexOf(":") + 1);
